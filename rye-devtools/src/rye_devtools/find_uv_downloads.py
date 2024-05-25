@@ -25,7 +25,7 @@ class UvDownload:
 
 
 class UvDownloads:
-    client: httpx.Client
+    client: httpx.AsyncClient
 
     RELEASE_URL = "https://api.github.com/repos/astral-sh/uv/releases"
 
@@ -44,7 +44,7 @@ class UvDownloads:
 
     RE = re.compile(r"uv-(?P<arch>[^\-]+)-(?P<plat_env>.+)(\.tar\.gz|\.zip)$")
 
-    def __init__(self, client: httpx.Client) -> None:
+    def __init__(self, client: httpx.AsyncClient) -> None:
         self.client = client
 
     async def most_recent_downloads(
